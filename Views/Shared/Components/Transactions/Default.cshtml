@@ -1,0 +1,70 @@
+﻿@model IEnumerable<CoreBusiness.Transaction>
+
+<div>
+    
+    Cashier Name:
+    @foreach (var tran in Model)
+    {
+        @tran.CashierName;
+        break;
+    }
+    <br />
+    Date Time:
+    @foreach (var tran in Model)
+    {
+        @tran.TimeStamp.ToString("dd/MM/yy hh:mm");
+        break;
+    }
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>SI.No</th>
+            <!--<th>Cashier Name</th>-->
+            <th>Product Name</th>
+            <!--<th>Date Time</th>-->
+            <!--<th>Qty Before</th>-->
+            <th>Qty Sold</th>
+            <!--<th>Qty After</th>-->
+            <th>Sold Amt</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int serialNumber = 1; // Initialize serial number
+        }
+        @foreach (var tran in Model)
+        {
+            <tr>
+                <td>@serialNumber</td> <!-- Display serial number -->
+                <!--<td>@tran.CashierName</td>-->
+                <td>@tran.ProductName</td>
+                <!--<td>@tran.TimeStamp.ToString("MM/dd hh:mm")</td>-->
+                <!--<td>@tran.BeforeQty</td>-->
+                <td>@tran.SoldQty</td>
+                <!--<td>@(tran.BeforeQty - tran.SoldQty)</td>-->
+                <td>@(string.Format(new System.Globalization.CultureInfo("en-IN"), "{0:C}", tran.SoldQty * tran.Price))</td>
+            </tr>
+            serialNumber++; // Increment serial number
+        }
+    </tbody>
+    <!--<tfoot>
+        <tr>
+            <td colspan="6">&nbsp;</td>
+            <td style="text-align:right">
+                <b>Grand Total:</b>
+            </td>
+            <td style="text-align:right">
+                <b>
+    @(string.Format(new System.Globalization.CultureInfo("en-IN"), "{0:C}", Model.Sum(x => x.Price * x.SoldQty)))
+                </b>
+            </td>
+        </tr>
+    </tfoot>-->
+</table>
+
+<b>Grand Total:</b>
+<b>
+        @(string.Format(new System.Globalization.CultureInfo("en-IN"), "{0:C}", Model.Sum(x => x.Price * x.SoldQty)))
+</b>

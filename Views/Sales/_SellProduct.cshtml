@@ -1,0 +1,13 @@
+﻿@model CoreBusiness.Product
+<div class="form-group">
+	<label asp-for="Name"></label>
+	<input class="form-control" asp-for="Name" type="text" readonly />
+</div>
+<div class="form-group">
+	<label asp-for="Price"></label>
+	<input class="form-control" asp-for="Price" type="text" readonly value="@(string.Format(new System.Globalization.CultureInfo("en-IN"), "{0:C}", Model.Price))" />
+</div>
+<div class="form-group">
+	<label asp-for="UnitPrice"></label>
+	<input class="form-control" asp-for="UnitPrice" type="text" readonly value="@(string.Format(new System.Globalization.CultureInfo("en-IN"), "{0:C}", Model.UnitPrice))" />
+</div>

@@ -1,0 +1,144 @@
+﻿@model SalesViewModel
+
+@{
+	ViewData["Title"] = "Sales Page";
+}
+
+@section title{
+<div class="row">
+	<div class="col-7"><h3>Cashier's Console</h3></div>
+	<div class="col-2"><label for="cashier">Cashier Name:</label></div>
+	<div class="col-3">
+		@* Dispaly Cashier's name here *@
+		@User?.Identity?.Name
+	</div>
+</div>
+}
+
+<br />
+<div class="row">
+	<div class="col-4">
+		<div class="text-danger" asp-validation-summary="All"></div>
+		@* Category selection*@
+		<label asp-for="SelectedCategoryId">Category:</label>
+		<select asp-for="SelectedCategoryId" class="form-control">
+			<option>- Please Select -</option>
+			@if (Model.Categories != null && Model.Categories.Count() > 0)
+			{
+				@foreach (var cat in Model.Categories)
+				{
+					<option value="@cat.CategoryId">@cat.Name</option>
+				}
+			}
+		</select>
+
+		<br />
+		<div id="productsPartial">
+			@* Product List *@
+		</div>
+		<br />
+		<div id="productDetailPartial">
+			@* Product Details *@
+		</div>
+		@* Sales form *@
+		<form method="post" asp-controller="sales" asp-action="sell" id="formSale">
+			<input asp-for="SelectedProductId" name="SelectedProductId" type="hidden" />
+			<div class="form-group">
+				<label asp-for="QuantityToSell"></label>
+				<input asp-for="QuantityToSell" class="form-control" type="number" min="1" />
+			</div>
+			<br />
+			<div class="form-group">
+				<input class="btn btn-primary" type="submit" value="Submit" />
+			</div>
+		</form>
+	</div>
+
+	<!-- Transactions Display -->
+	<div class="col" id="printarea">
+		<div class="col">
+			@* List of Transactions *@
+
+			@await Component.InvokeAsync("Transactions")
+		</div>
+		<div class="col-2">
+			<label>&nbsp;</label>
+			<button id="print" type="button" class="btn btn-primary form-control">Print</button>
+		</div>
+	</div>
+	
+</div>
+
+@section Scripts{
+	<script>
+		$(function () {
+
+			//Initialize the form
+			$("#formSale").hide();
+			$("#QuantityToSell").val("");
+
+			//Load the products if category is already selected
+			var selectedCategoryId = $("#SelectedCategoryId").val();
+			if (selectedCategoryId > 0) 
+			{
+				loadProducts(selectedCategoryId);
+			}
+
+			//Handle category selection
+			$("#SelectedCategoryId").on("change", function () {
+				// $("#productsPartial").load("/products/ProductsByCategoryPartial", { categoryId: $(this).val() });
+				// $("#productDetailPartial").html("");
+				// $("#formSale").hide();
+				loadProducts($(this).val());
+			});
+
+			//Handle product selection
+			$('#productsPartial').on('click', '.product-row', function () {
+				
+				//Highlight the row selected
+				$('.product-row').removeClass('highlight');
+				$(this).addClass('highlight');
+
+				//Get the product ID from the "product-id" attribute of the clicked row
+				var productId = $(this).attr('product-id');
+				//alert(productId);
+
+				//Set the product ID value to the hidden input field using the name attribute
+				$("input[name='SelectedProductId']").val(productId);
+
+				//Load the details of the product in a partial view
+				$("#productDetailPartial").load("/sales/SellProductPartial", { productId: productId });
+
+				if (productId > 0) {
+					$("SelectedProductId").val(productId);
+					$("#formSale").show();
+				}
+				else {
+					$("SelectedProductId").val("");
+					$("#formSale").hide();
+				}
+			});
+
+
+		});
+
+		function loadProducts(categoryId){
+			//$("#productsPartial").load("/products/ProductsByCategoryPartial", { categoryId: categoryId });
+			$("#productsPartial").load("/sales/ProductsByCategoryPartial", { categoryId: categoryId });
+			$("#productDetailPartial").html("");
+			$("#formSale").hide();
+		}
+
+		//Handle print
+		$(function () {
+
+			// Handle print
+			$('#print').on('click', function () {
+				window.print();
+			});
+
+		});
+
+	</script>
+}
+

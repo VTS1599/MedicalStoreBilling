@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedBilling", "MedBilling.csproj", "{DCDED9E5-C6B8-41C2-9EFC-D33FEB118F4F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{67F8CCD8-F128-4A90-9D29-9DD8E687276D} = {67F8CCD8-F128-4A90-9D29-9DD8E687276D}
+		{9BEFA8BC-CDCF-4943-89EA-3F552033A8C0} = {9BEFA8BC-CDCF-4943-89EA-3F552033A8C0}
+		{A439E24B-F46B-44E8-BBDD-81EC31B728FE} = {A439E24B-F46B-44E8-BBDD-81EC31B728FE}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreBusiness", "..\CoreBusiness\CoreBusiness.csproj", "{67F8CCD8-F128-4A90-9D29-9DD8E687276D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UseCases", "..\UseCases\UseCases.csproj", "{9BEFA8BC-CDCF-4943-89EA-3F552033A8C0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Plugins", "Plugins", "{897CDF2F-4379-437F-A542-D4B858DF103B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugins.DataStore.InMemory", "..\Plugins\Plugins.DataStore.InMemory\Plugins.DataStore.InMemory.csproj", "{A439E24B-F46B-44E8-BBDD-81EC31B728FE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugins.DataStore.SQL", "..\Plugins\Plugins.DataStore.SQL\Plugins.DataStore.SQL.csproj", "{AC387704-5496-44A5-AD48-99A7F97B863E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCDED9E5-C6B8-41C2-9EFC-D33FEB118F4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCDED9E5-C6B8-41C2-9EFC-D33FEB118F4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCDED9E5-C6B8-41C2-9EFC-D33FEB118F4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCDED9E5-C6B8-41C2-9EFC-D33FEB118F4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67F8CCD8-F128-4A90-9D29-9DD8E687276D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67F8CCD8-F128-4A90-9D29-9DD8E687276D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67F8CCD8-F128-4A90-9D29-9DD8E687276D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67F8CCD8-F128-4A90-9D29-9DD8E687276D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BEFA8BC-CDCF-4943-89EA-3F552033A8C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BEFA8BC-CDCF-4943-89EA-3F552033A8C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BEFA8BC-CDCF-4943-89EA-3F552033A8C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BEFA8BC-CDCF-4943-89EA-3F552033A8C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A439E24B-F46B-44E8-BBDD-81EC31B728FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A439E24B-F46B-44E8-BBDD-81EC31B728FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A439E24B-F46B-44E8-BBDD-81EC31B728FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A439E24B-F46B-44E8-BBDD-81EC31B728FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC387704-5496-44A5-AD48-99A7F97B863E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC387704-5496-44A5-AD48-99A7F97B863E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC387704-5496-44A5-AD48-99A7F97B863E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC387704-5496-44A5-AD48-99A7F97B863E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A439E24B-F46B-44E8-BBDD-81EC31B728FE} = {897CDF2F-4379-437F-A542-D4B858DF103B}
+		{AC387704-5496-44A5-AD48-99A7F97B863E} = {897CDF2F-4379-437F-A542-D4B858DF103B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD136DC5-736A-4AF3-B246-CEB3FBE1C657}
+	EndGlobalSection
+EndGlobal
